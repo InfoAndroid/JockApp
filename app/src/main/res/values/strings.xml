@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">JockApp</string>
+    <string name="submit">Submit</string>
+    <string name="exception_404_not_found">Ups!, This resource was not Found.</string>
+    <string name="exception_api_unauthorized">Ups! Access is denied due to invalid credentials.</string>
+
+    <string name="exception_get_jokes">Ups! Error occurred while fetching data.</string>
+    <string name="exception_callback_null">Callback can\'t be null</string>
+</resources>
