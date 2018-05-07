@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.infoandroid.jockapp.model.JokeModel;
 import com.infoandroid.jockapp.model.response.JokeResponse;
+import com.infoandroid.jockapp.sharepreference.AppSharedPreference;
+import com.infoandroid.jockapp.util.Constants;
 
 import java.util.ArrayList;
 
@@ -18,12 +20,16 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     private LayoutInflater mInflater;
     private JokeResponse jokeResponse;
-    ArrayList<JokeModel> jokeModels;
+    private ArrayList<JokeModel> jokeModels;
+    private String name,lastName;
+
 
     // Data is passed into the constructor
     public MyRecyclerViewAdapter(Context context,  ArrayList<JokeModel> jokeModels) {
         this.mInflater = LayoutInflater.from(context);
         this.jokeModels = jokeModels;
+        name = AppSharedPreference.getString(Constants.NAME_KEY,"",context);
+        lastName = AppSharedPreference.getString(Constants.LAST_NAME_KEY,"",context);
     }
     // Inflates the cell layout from xml when needed
     @Override
@@ -35,6 +41,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     // Binds the data to the textview in each cell
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        holder.neme_text.setText(name+" "+lastName);
         String animal = jokeModels.get(position).getJoke();
         holder.myTextView.setText(animal);
     }
@@ -47,10 +54,12 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     // Stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder  {
         public TextView myTextView;
+        public TextView neme_text;
 
         public ViewHolder(View itemView) {
             super(itemView);
             myTextView = (TextView) itemView.findViewById(R.id.info_text);
+            neme_text = (TextView) itemView.findViewById(R.id.neme_text);
 
         }
 

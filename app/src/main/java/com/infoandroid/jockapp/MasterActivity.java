@@ -3,6 +3,7 @@ package com.infoandroid.jockapp;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -44,7 +45,7 @@ public class MasterActivity extends AppCompatActivity implements ResponseListene
 
     private void data() {
            int numberOfColumns = 2;
-        recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new MyRecyclerViewAdapter(this, jokeModels);
 
         recyclerView.setAdapter(adapter);
@@ -53,19 +54,9 @@ public class MasterActivity extends AppCompatActivity implements ResponseListene
 
     @Override
     public void onSuccessResponce(int apiId, Object responce) {
-        JSONObject jsonObject = null;
-        jokeModels =new ArrayList<>();
-        jokeResponse = (JokeResponse) responce;
-        try {
-            jsonObject = new JSONObject(responce.toString());
-            JSONArray jsonArray = jsonObject.getJSONArray("value");
-            jokeModels = new Gson().fromJson(jsonArray.toString(), new TypeToken<List<JokeModel>>(){}.getType());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-
-
+        jokeModels = new ArrayList<>();
+       jokeResponse = (JokeResponse) responce;
+       jokeModels = (ArrayList<JokeModel>) jokeResponse.getValue();
         data();
     }
 

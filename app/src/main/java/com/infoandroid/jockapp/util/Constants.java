@@ -20,4 +20,11 @@ public class Constants {
     public static final int MAX_POOL_SIZE = 15;
     public static final int KEEP_ALIVE_TIME = 120;
     public static final TimeUnit TIME_UNIT = TimeUnit.SECONDS;
+
+    //prefrance
+
+    public static final  String NAME_KEY="name";
+    public static final  String LAST_NAME_KEY="LastName";
+
+
 }
