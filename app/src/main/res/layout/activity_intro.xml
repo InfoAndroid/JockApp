@@ -25,7 +25,7 @@
                android:id="@+id/edtName"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:hint="Floating Hint Enabled Default" />
+               android:hint="Name" />
 
        </android.support.design.widget.TextInputLayout>
 
@@ -42,7 +42,7 @@
                android:id="@+id/edtLastName"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:hint="Floating Hint Enabled Default" />
+               android:hint="Last Name" />
 
        </android.support.design.widget.TextInputLayout>
 

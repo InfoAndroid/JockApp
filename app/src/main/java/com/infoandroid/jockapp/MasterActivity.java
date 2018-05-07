@@ -26,7 +26,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MasterActivity extends AppCompatActivity implements ResponseListener {
+public class MasterActivity extends BaseActivity implements ResponseListener {
     RecyclerView recyclerView;
     private RestClient restClient;
     MyRecyclerViewAdapter adapter;
@@ -40,6 +40,7 @@ public class MasterActivity extends AppCompatActivity implements ResponseListene
         restClient = new RestClient(MasterActivity.this);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
+        showProgressDialog("Loading...",true);
         restClient.callback( MasterActivity.this).forgototpMobileVerify(10);
     }
 
@@ -58,10 +59,12 @@ public class MasterActivity extends AppCompatActivity implements ResponseListene
        jokeResponse = (JokeResponse) responce;
        jokeModels = (ArrayList<JokeModel>) jokeResponse.getValue();
         data();
+        removeProgressDialog();
     }
 
     @Override
     public void onFailearResponce(int apiId, String error) {
+        removeProgressDialog();
         Log.d("Data","fffffffffff");
     }
 }

@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.infoandroid.jockapp.sharepreference.AppSharedPreference;
 import com.infoandroid.jockapp.util.Constants;
 
-public class IntroActivity extends AppCompatActivity {
+public class IntroActivity extends BaseActivity {
  private Button btnSubmit;
  private TextInputEditText edtName;
  private TextInputEditText edtLastName;
